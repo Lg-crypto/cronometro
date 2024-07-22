@@ -2,25 +2,24 @@ import './App.css';
 import { useState } from 'react';
 function App() {
   const [isActive,setisActive] = useState(false);
-  const [pausado,setPausado] = useState(true);
   const [time, setTime] = useState(0)
   
-  const handleStart = ()=>{
+  useEffect(() => {
     let intervalo = null;
-    if (isActive && !pausado){
+
+    if (isActive) {
       intervalo = setInterval(() => {
-        setTime((time)=> time + 1)
+        setTime((time) => time + 1);
       }, 1000);
-    }else{
-      clearInterval(intervalo);
     }
-    return ()=>{
+
+    return () => {
       clearInterval(intervalo);
-    }
-  }
+    };
+  }, [isActive]);
 
   const continuar = ()=>{
-    setPausado(!pausado)
+    setPausado(!isActive)
   }
   const resetar = ()=>{
     setisActive(!isActive);
@@ -33,7 +32,7 @@ function App() {
     setTime(time-10);
   }
   return (
-    <div className="App"  onLoad={handleStart()}>
+    <div className="App">
       <p>{time ? time : 0}</p>
       <button onClick={voltar()}>voltar</button>
       <button onClick={adiantar()}>adiantar</button>
