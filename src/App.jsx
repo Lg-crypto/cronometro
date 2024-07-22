@@ -1,35 +1,29 @@
 import './App.css';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 function App() {
-  const [ativado,setAtiavdo] = useState(false);
+  const [isActive,setisActive] = useState(false);
   const [pausado,setPausado] = useState(true);
   const [time, setTime] = useState(0)
   
-  useEffect(()=>{
+  const handleStart = ()=>{
     let intervalo = null;
-
-    if (ativado && !pausado){
+    if (isActive && !pausado){
       intervalo = setInterval(() => {
         setTime((time)=> time + 1)
       }, 1000);
     }else{
       clearInterval(intervalo);
     }
-
     return ()=>{
-
+      clearInterval(intervalo);
     }
-  })
-  
-  const Iniciar = () => {
-    setAtiavdo(true);
-    setPausado(false);
-  };
+  }
+
   const continuar = ()=>{
     setPausado(!pausado)
   }
   const resetar = ()=>{
-    setAtiavdo(!ativado);
+    setisActive(!isActive);
     setTime(0);
   }
   const adiantar = ()=>{
@@ -39,9 +33,8 @@ function App() {
     setTime(time-10);
   }
   return (
-    <div className="App">
+    <div className="App"  onLoad={handleStart()}>
       <p>{time ? time : 0}</p>
-      <button onClick={Iniciar()}>Iniciar</button>
       <button onClick={voltar()}>voltar</button>
       <button onClick={adiantar()}>adiantar</button>
       <button onClick={continuar()}>{pausado ? "continuar" : "pausar"}</button>
