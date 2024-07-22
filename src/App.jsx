@@ -1,5 +1,5 @@
 import './App.css';
-import { useState } from 'react';
+import { useState , useEffect} from 'react';
 function App() {
   const [isActive,setisActive] = useState(false);
   const [time, setTime] = useState(0)
@@ -19,7 +19,7 @@ function App() {
   }, [isActive]);
 
   const continuar = ()=>{
-    setPausado(!isActive)
+    setisActive(!isActive)
   }
   const resetar = ()=>{
     setisActive(!isActive);
@@ -33,10 +33,10 @@ function App() {
   }
   return (
     <div className="App">
-      <p>{time ? time : 0}</p>
+      <p>{time}</p>
       <button onClick={voltar()}>voltar</button>
       <button onClick={adiantar()}>adiantar</button>
-      <button onClick={continuar()}>{pausado ? "continuar" : "pausar"}</button>
+      <button onClick={continuar()}>{isActive ? "pausar" : "continuar"}</button>
       <button onClick={resetar()}>resetar</button>
     </div>
   );
