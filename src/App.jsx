@@ -34,8 +34,8 @@ function App() {
   return (
     <div className="App">
       <p>{time}</p>
-      <button onClick={voltar()}>voltar</button>
-      <button onClick={adiantar()}>adiantar</button>
+      <button /*onClick={voltar()}*/>voltar</button>
+      <button /*onClick={adiantar()}*/>adiantar</button>
       <button onClick={continuar()}>{isActive ? "pausar" : "continuar"}</button>
       <button onClick={resetar()}>resetar</button>
     </div>
