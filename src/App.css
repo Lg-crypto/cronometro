@@ -3,9 +3,18 @@
   padding: 0;
 }
 
-.App {
-  
+body{
+  color: #fff;
+  background-color: rgb(1, 13, 19);
+}
+
+.App { 
   text-align: center;
+  position: relative;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
 }
 button{
   width:50px;
@@ -13,9 +22,19 @@ button{
   background-color: transparent;
   border: none;
   cursor: pointer;
-  margin: 50px 10px;
-
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  margin: 0 10px 10px 10px;
 }
 p{
   font-size: 30px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 10px;
+  text-align: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  margin: 0 50%;
+  transform: translate(-50%, 0);
 }
